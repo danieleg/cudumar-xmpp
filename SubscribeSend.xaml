@@ -1,0 +1,17 @@
+﻿<Window x:Class="Cudumar.SubscribeSend"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:Cudumar"
+        Title="SubscribeSend" Width="300" SizeToContent="Height" ResizeMode="NoResize" Loaded="Window_Loaded" Background="#F0EDE0">
+  <Grid Margin="2">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <i:TextBoxAdorner Grid.Row="0" Margin="1 6 1 10" x:Name="txtTo" Placeholder="Please enter the email address" Background="White"></i:TextBoxAdorner>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button Margin="1" Padding="6" Name="btSend" Click="btSend_Click">Send</Button>
+      <Button Margin="1" Padding="6" Name="btClose" Click="btClose_Click">Cancel</Button>
+    </StackPanel>
+  </Grid>
+</Window>

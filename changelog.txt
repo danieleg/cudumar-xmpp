@@ -1,0 +1,24 @@
+﻿cudumar-xmpp changelog
+
+v0.0.4 #
+- Optimized thread management for read/write xmpp socket
+- SASL X-FACEBOOK-PLATFORM authentication supported
+
+v0.0.3 #11/06/2012
+- disco#info support (XEP-0030: Service Discovery)
+- caps support (XEP-0115: Entity Capabilities)
+- vcard-temp (XEP-0054: vcard-temp)
+- vcard-temp:x:update (XEP-0153: vCard-Based Avatars)
+- SASL X-GOOGLE-TOKEN authentication supported
+- SASL X-MESSENGER-OAUTH2 authentication supported
+- urn:xmpp:ping support (XEP-0199: XMPP Ping)
+- new roster and chat management
+
+v0.0.2 #26/10/2011
+- SASL DIGEST-MD5 authentication supported
+- added support to Facebook Chat
+- few UI improvements
+
+v0.0.1 #19/10/2011
+- enjoy with first version
+- TLS and SALS PLAIN authentication supported

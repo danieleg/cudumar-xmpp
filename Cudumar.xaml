@@ -1,0 +1,103 @@
+﻿<Window x:Class="Cudumar.CudumarMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:Cudumar" Icon="Resources\cudumar.ico"        
+        Title="cudumar-xmpp" Height="400" Width="300" MinWidth="100" MinHeight="100" Closing="Window_Closing">
+  <DockPanel LastChildFill="True" Background="White">
+    <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+      <MenuItem Header="_File">
+        <MenuItem Name="miLogout" Header="_Logout" Click="miLogout_Click" IsEnabled="False" />
+        <Separator></Separator>
+        <MenuItem Name="miClose" Header="_Close" Click="miClose_Click"/>
+      </MenuItem>
+      <MenuItem Header="_View">
+        <MenuItem Name="miViewHideAvatars" Header="_Hide Avatars" Click="miViewHideAvatars_Click" IsCheckable="True" />
+        <MenuItem Name="miViewShowAvatars" Header="_Show Avatars" Click="miViewShowAvatars_Click" IsCheckable="True" />
+      </MenuItem>
+      <MenuItem Header="_?">
+        <MenuItem Header="_Log" Click="miLog_Click" />
+        <MenuItem Header="_Debug">
+          <MenuItem Header="Xmpp Stream Viewer" Click="miTracer_Click" />
+          <MenuItem Header="Check Server Connection" Click="miCheckLine_Click" />
+          <MenuItem Header="Send Ping" Click="miSendPing_Click" />
+          <MenuItem Header="View User vCard" Click="miViewUserVCard_Click" />
+          <MenuItem Header="Request User vCard" Click="miRequestUserVCard_Click" />
+          <MenuItem Header="Request Server Disco#Info" Click="miDiscoInfo_Click" />          
+        </MenuItem>
+        <Separator></Separator>
+        <MenuItem Header="_About cudumar-xmpp" Click="miAbout_Click" />
+      </MenuItem>
+    </Menu>
+
+    <Grid Name="mainGrid">
+      <!-- #LOGIN# -->
+      <Grid Name="panelConnect">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="7*" MaxWidth="300"/>
+          <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Access" Grid.Column="1" VerticalAlignment="Center" Padding="2">
+          <StackPanel Orientation="Vertical">
+            <i:TextBoxAdorner x:Name="txtServer" Placeholder="host:port" ToolTip="Enter the host and port of the server" Margin="0 0 0 1" PreviewMouseDown="txtServer_PreviewMouseDown" IconSource="resources\arrow-down.png" IconWidth="9" IconHeight="15" IconClick="txtServer_IconClick"></i:TextBoxAdorner>
+            <i:TextBoxAdorner x:Name="txtUser" Placeholder="username" ToolTip="Enter your username" Margin="0 0 0 1"/>
+            <i:PasswordBoxAdorner x:Name="txtPassword" Placeholder="password" ToolTip="Enter your username password" Margin="0 0 0 1"/>
+            <StackPanel Orientation="Horizontal" Margin="0 6 0 0">
+              <TextBlock VerticalAlignment="Center" Margin="0 0 3 0">Sign in as:</TextBlock>
+              <ComboBox Name="cmbConnectPresence" SelectedIndex="0" Background="Transparent">
+                <ComboBox.BorderBrush>
+                  <SolidColorBrush />
+                </ComboBox.BorderBrush>
+              </ComboBox>
+            </StackPanel>
+            <Button Content="Access" Name="btConnect" Padding="3" Margin="0 2 0 2"></Button>
+          </StackPanel>
+        </GroupBox>
+      </Grid>
+      <!-- end login -->
+      <!-- #ROSTER# -->
+      <DockPanel Name="panelRoster" Visibility="Hidden" LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+          <ComboBox DockPanel.Dock="Left" Margin="2" Name="cmbRosterPresence" SelectedIndex="0" SelectionChanged="cmbRosterPresence_SelectionChanged" Background="Transparent" VerticalAlignment="Center">
+            <ComboBox.BorderBrush>
+              <SolidColorBrush />
+            </ComboBox.BorderBrush>
+          </ComboBox>
+          <Image Name="AvatarImg" RenderOptions.BitmapScalingMode="HighQuality" MaxWidth="32" MaxHeight="32" VerticalAlignment="Center" Margin="1" MouseLeftButtonDown="AvatarImg_MouseLeftButtonDown" Cursor="Hand" Height="32" Width="32"></Image>
+          <i:TextBoxAdorner x:Name="txtPresenceMessage" Placeholder="customize message..."  Margin="0 2 4 2" PreviewMouseDown="txtPresenceMessage_PreviewMouseDown" IconSource="resources\arrow-down.png" IconWidth="9" IconHeight="15" IconClick="txtPresenceMessage_IconClick" LostFocus="txtPresenceMessage_LostFocus" KeyDown="txtPresenceMessage_KeyDown" VerticalAlignment="Center"></i:TextBoxAdorner>
+        </DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="1">
+          <Button Margin="1" Name="btSendSubRequest" Click="btSendSubRequest_Click">+ Invite</Button>
+          <Button Margin="1" Name="btVisualRosterOptions" Visibility="Hidden">View</Button>
+        </StackPanel>
+        <Border Background="Transparent" BorderBrush="#bbbbbb" BorderThickness="1" Margin="2" Padding="3" CornerRadius="4">
+          <ListBox VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" Name="lstRoster" MouseDoubleClick="lstRoster_MouseDoubleClick" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ListBox.HorizontalContentAlignment="Stretch">
+            <ListBox.GroupStyle>
+              <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+                  </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+              </GroupStyle>
+            </ListBox.GroupStyle>
+            <ListBox.Resources>
+              <Style TargetType="ListBoxItem">
+                <Style.Resources>
+                  <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                  <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                  <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                </Style.Resources>
+                <Setter Property="BorderBrush" Value="#eeeeee" />
+                <Setter Property="BorderThickness" Value="0 0 0 1" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+              </Style>
+            </ListBox.Resources>
+          </ListBox>
+        </Border>
+      </DockPanel>
+      <!-- end roster -->
+
+    </Grid>
+  </DockPanel>
+</Window>

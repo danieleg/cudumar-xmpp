@@ -1,0 +1,35 @@
+﻿<Window x:Class="Cudumar.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" SizeToContent="Height" Width="300" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Background="White">
+  <Grid>
+    <StackPanel Orientation="Vertical" Margin="6">
+      <Image Name="imgPresence" Source="resources\cucumber.png" Margin="2" Width="96" Height="96"></Image>
+      <TextBlock Name="labelProductName" />
+      <TextBlock Name="labelVersion" />
+      <TextBlock Name="labelCopyright" />
+      <TextBlock Name="labelCompanyName" />
+      <TextBlock Name="textBoxDescription" />
+
+      <StackPanel Orientation="Horizontal" Margin="6 0 6 0">
+        <TextBlock>
+          <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://cudumar-xmpp.blogspot.com/">
+            <TextBlock Text="Blog"/>
+          </Hyperlink>
+        </TextBlock>
+        <TextBlock> -</TextBlock>
+        <TextBlock>
+          <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://code.google.com/p/cudumar-xmpp/">
+            <TextBlock Text="Code"/>
+          </Hyperlink>
+        </TextBlock>
+        <TextBlock> - </TextBlock>
+        <TextBlock>
+          <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.facebook.com/cudumar.xmpp/">
+            <TextBlock Text="Fan Page"/>
+          </Hyperlink>
+        </TextBlock>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</Window>

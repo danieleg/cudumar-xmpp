@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Cudumar.RosterItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" MouseMove="wrapper_MouseEnter" MouseEnter="wrapper_MouseEnter" MouseLeave="wrapper_MouseLeave" Background="Transparent">
+
+  <StackPanel Grid.Column="0" Orientation="Horizontal">
+    <Border x:Name="AvatarBorder" Margin="2 0 4 0">
+      <Image Name="AvatarImg" RenderOptions.BitmapScalingMode="HighQuality" MaxWidth="32" MaxHeight="32" VerticalAlignment="Center"></Image>
+    </Border>
+    <TextBlock Padding="0" VerticalAlignment="Center">
+      <Run Name="lbName"></Run>
+      <Run Name="lbPresence" Foreground="Gray"></Run>
+    </TextBlock>
+  </StackPanel>
+</UserControl>

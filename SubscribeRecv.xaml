@@ -1,0 +1,17 @@
+﻿<Window x:Class="Cudumar.SubscribeRecv"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SubscribeRequest" Width="400" ResizeMode="NoResize" SizeToContent="Height" Background="#F0EDE0">
+  <Grid Margin="2">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Name="lbMessage" Grid.Row="0" Margin="6 6 0 16"></TextBlock>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button Margin="1" Padding="6" Name="btApprove" Click="btApprove_Click">Accept</Button>
+      <Button Margin="1" Padding="6" Name="btRefuse" Click="btRefuse_Click">Reject</Button>
+      <Button Margin="1" Padding="6" Name="btClose" Click="btClose_Click">Think about it later</Button>
+    </StackPanel>
+  </Grid>
+</Window>
